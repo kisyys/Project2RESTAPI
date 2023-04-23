@@ -6,65 +6,65 @@ const Movie = require('./models/movie');
 router.get("/api/getall", async (req, res) => {
   try {
     const movies = await Movie.find();
+    console.log(movies);
     res.json(movies)
-
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({error: "Something went wrong"})
   }
 });
 
 // Get movie by ID
-router.get('/api/:id', (req, res, next) => {
-  const promise = Movie.findById(req.params.id);
-  promise.then((movie) => {
-    if (!movie) {
-      next({ message: 'The movie was not found.', code: 10 });
-    } else {
-     res.json(movie);
+router.get('/api/:id', async (req, res) => {
+  try { 
+    const movie = await Movie.findById(req.params.id);
+    console.log(movie);
+    res.json({movie});
+  } catch (e) {
+      console.log(e.message);
+      res.status(500).json({error: "Something went wrong"})
     }
-  }).catch((err) => {
-    res.json('The movie was not found.');
-  });
 });
 
 // Add movie
-router.post("/api/add", async (req, res) => {
+router.post('/api/add', async (req, res) => {
   const movie = new Movie({
     title: req.body.title,
-    director: req.body.director,
-    year: req.body.year
+    year: req.body.year,
+    genre: req.body.genre
   });
 
   try {
     const newMovie = await movie.save();
     res.status(201).json({ newMovie });
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({error: "Something went wrong"})
   }
 });
 
 // Update movie by ID
 router.put("/api/update/:id", async (req, res) => {
-  await Movie.findOneAndUpdate({ id: req.params.id }, req.body, { new: true }, (err, result) => {
-    if (err) {
-      return res.status(500).json({ message: err.message });
+  try { 
+    const movie = await Movie.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
+    console.log(movie);
+    res.json({movie});
+  } catch (e) {
+      console.log(e.message);
+      res.status(500).json({error: "Something went wrong"})
     }
-    else {
-      res.status(200).json({ result });
-    }
-  }).clone().catch(function (err) { console.log(err) });
 });
 
 // Delete movie by ID
 router.delete("/api/delete/:id", async (req, res) => {
-  await Movie.findByIdAndDelete({ _id: req.body._id }, (err, result) => {
-    if (err) {
-      return res.status(500).json({ message: err.message });
+  try { 
+    const movie = await Movie.findByIdAndDelete({ _id: req.params.id });
+    console.log(movie);
+    res.json({movie});
+  } catch (e) {
+      console.log(e.message);
+      res.status(500).json({error: "Something went wrong"})
     }
-    else {
-      res.status(200).json(result);
-    }
-  }).clone().catch(function (err) { console.log(err) });
 });
 
 module.exports = router;

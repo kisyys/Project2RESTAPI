@@ -9,7 +9,7 @@ app.use('/', routes);
 
 //MongoDB connection
 const mongoose = require('mongoose');
-const mongoURL = 'mongodb+srv://mongoviopemet:M3tr0p0l1a@cluster0.gkcribz.mongodb.net/moviedb?retryWrites=true&w=majority';
+const mongoURL = 'mongodb+srv://user42:L4ur34FullStack@cluster1.mqvwtag.mongodb.net/moviedb?retryWrites=true&w=majority';
 mongoose.connect(mongoURL, { useNewUrlParser: true , useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
