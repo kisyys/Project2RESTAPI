@@ -2,5 +2,16 @@
   "dependencies": {
     "express": "^4.18.2",
     "mongoose": "^7.0.1"
-  }
+  },
+  "name": "project2restapi",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
 }
