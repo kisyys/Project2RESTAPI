@@ -1,8 +1,8 @@
-# Project 2: REST / API
+# Project 2: REST API
 Can be found and used at https://project2restapi.azurewebsites.net/api/getall.
 
 ## Purpose of the project
-Create a REST API for movie database in mongodb cloud services.
+Create a REST API for movie database in Mongodb cloud services.
 
 ## How to use application
 User can do below actions for example via Postman.
