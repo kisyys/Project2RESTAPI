@@ -8,9 +8,13 @@ Create a REST API for movie database in mongodb cloud services.
 User can do below actions for example via Postman.
 
 GET - Return all documents in collection: http://myapp.com/api/getall
+
 GET - Return one item with the given id: http://myapp.com/api/:id 
+
 POST - Create a new document in the collection: http://myapp.com/api/add 
+
 PUT - Update the document with the given id: http://myapp.com/api/update/:id 
+
 DELETE - Delete the item with the given id: http://myapp.com/api/delete/:id
 
 ## Status of the project
